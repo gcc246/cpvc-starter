@@ -1,155 +1,925 @@
 <!DOCTYPE html>
-<!--
-  ================================================================
-  READ THIS BEFORE YOU PASTE ANYTHING
-
-  When Gemini gives you a page, you do NOT paste it into a part of
-  this file. You replace the entire file.
-
-  Click into the editor, press Ctrl+A (Cmd+A on Mac), press Delete,
-  then paste. Everything here is meant to be thrown away.
-
-  Do that only AFTER your live link works. Get the link first.
-  ================================================================
--->
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My first site</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --navy: #0d1d30;
-    --card: #142a44;
-    --line: #27466a;
-    --aqua: #6de1d7;
-    --text: #ffffff;
-    --muted: #94a9bf;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--navy);
-    color: var(--text);
-    font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-    line-height: 1.6;
-    display: flex;
-    justify-content: center;
-    padding: 6vh 20px;
-  }
-  main { width: 100%; max-width: 640px; }
-  .badge {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--aqua);
-    margin-bottom: 18px;
-  }
-  h1 {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 800;
-    font-size: clamp(38px, 9vw, 68px);
-    letter-spacing: -0.05em;
-    line-height: 1.02;
-    margin: 0 0 8px;
-  }
-  .name {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: clamp(18px, 4vw, 24px);
-    letter-spacing: -0.04em;
-    color: var(--aqua);
-    margin: 0 0 24px;
-  }
-  p.lead { font-size: 18px; color: var(--muted); margin: 0 0 34px; }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 26px 28px;
-    margin-bottom: 18px;
-  }
-  .card h2 {
-    font-family: "Unbounded", "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: 15px;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    color: var(--aqua);
-    margin: 0 0 16px;
-  }
-  ol { margin: 0; padding-left: 20px; }
-  li { margin-bottom: 12px; color: var(--muted); }
-  li:last-child { margin-bottom: 0; }
-  li b { color: var(--text); font-weight: 700; }
-  code {
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 0.92em;
-    background: #0a1727;
-    border: 1px solid var(--line);
-    border-radius: 5px;
-    padding: 1px 6px;
-    color: var(--aqua);
-  }
-  a { color: var(--aqua); }
-  footer {
-    margin-top: 30px;
-    font-size: 14px;
-    color: #6e839a;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pantry Cook — Learn to Cook with What You Have</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #DC2626;
+      --primary-hover: #B91C1C;
+      --primary-light: #FEF2F2;
+      --primary-border: #FCA5A5;
+      --bg: #FAFAFA;
+      --card-bg: #FFFFFF;
+      --text-main: #111827;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-main);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-badge {
+      background-color: var(--primary);
+      color: white;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    .nav-tagline {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      flex: 1;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      background: linear-gradient(180deg, var(--primary-light) 0%, rgba(255,255,255,0) 100%);
+      padding: 2.5rem 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(220, 38, 38, 0.1);
+    }
+
+    .hero h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.025em;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Section 1: Pantry Input Section */
+    .section-card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-number {
+      background-color: var(--primary);
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .input-field {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input-field:focus {
+      border-color: var(--primary);
+    }
+
+    .btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-secondary {
+      background-color: var(--card-bg);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg);
+    }
+
+    .quick-add {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .quick-add-title {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-right: 0.25rem;
+    }
+
+    .chip-btn {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      color: var(--text-main);
+      transition: all 0.2s;
+    }
+
+    .chip-btn:hover {
+      border-color: var(--primary-border);
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* Active Pantry List */
+    .pantry-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      min-height: 48px;
+      padding: 0.75rem;
+      background-color: var(--bg);
+      border-radius: 8px;
+      border: 1px dashed var(--border);
+      align-items: center;
+    }
+
+    .empty-pantry-msg {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    .tag {
+      background-color: var(--primary);
+      color: white;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    .tag button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      opacity: 0.8;
+    }
+
+    .tag button:hover {
+      opacity: 1;
+    }
+
+    /* Section 2: Recipe Feed Grid */
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .recipe-card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .recipe-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-badge {
+      align-self: flex-start;
+      background-color: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .recipe-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .recipe-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      flex: 1;
+    }
+
+    /* Macros Bar */
+    .macros-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      background-color: var(--bg);
+      padding: 0.6rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .macro-item span {
+      display: block;
+    }
+
+    .macro-value {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+
+    .macro-label {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .match-info {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .match-high {
+      color: #059669;
+      font-weight: 600;
+    }
+
+    /* Modal / Expanded Recipe View */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background-color: var(--card-bg);
+      border-radius: var(--radius);
+      max-width: 650px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--bg);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+
+    .close-modal:hover {
+      color: var(--text-main);
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+    }
+
+    .beginner-tip {
+      background-color: var(--primary-light);
+      border-left: 4px solid var(--primary);
+      padding: 0.75rem 1rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.25rem 0;
+      font-size: 0.875rem;
+    }
+
+    .beginner-tip-title {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .ingredients-list, .steps-list {
+      margin-bottom: 1.5rem;
+    }
+
+    .ingredients-list h4, .steps-list h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .ingredients-list ul {
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .ingredients-list li {
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ingredients-list li::before {
+      content: "•";
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .steps-list ol {
+      padding-left: 1.25rem;
+    }
+
+    .steps-list li {
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--card-bg);
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+      .recipe-grid {
+        grid-template-columns: 1fr;
+      }
+      .input-group {
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-<main>
 
-  <span class="badge">Cal Poly Vibe Coding &middot; Session 01</span>
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <span class="logo-badge">Pantry</span> Cook
+      </a>
+      <span class="nav-tagline">Beginner-Friendly Meals</span>
+    </div>
+  </header>
 
-  <h1>It&rsquo;s live.</h1>
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Banner -->
+    <div class="hero">
+      <h1>Cook tasty meals with <span>what you have</span></h1>
+      <p>Add the ingredients sitting in your fridge or pantry. We'll show you easy recipes with full calorie and macro counts so you can learn with confidence.</p>
+    </div>
 
-  <!-- Step 5: change the name below to yours, then commit. -->
-  <p class="name">Built by YOUR NAME HERE</p>
+    <!-- Step 1: Add Ingredients -->
+    <section class="section-card">
+      <div class="section-header">
+        <div class="step-number">1</div>
+        <h2 class="section-title">What ingredients do you have?</h2>
+      </div>
 
-  <p class="lead">
-    This page is on the internet. Anyone you send this link to can open it,
-    on any device, right now. You made that happen in about five minutes.
-  </p>
+      <form id="ingredient-form" onsubmit="handleAddIngredient(event)">
+        <div class="input-group">
+          <input 
+            type="text" 
+            id="ingredient-input" 
+            class="input-field" 
+            placeholder="e.g., Eggs, Rice, Tomato, Chicken, Pasta..." 
+            autocomplete="off"
+          />
+          <button type="submit" class="btn">Add Ingredient</button>
+        </div>
+      </form>
 
-  <div class="card">
-    <h2>Three things, in this order</h2>
-    <ol>
-      <li><b>Put your name on it.</b> Edit <code>index.html</code>, change
-        YOUR NAME HERE above, commit, refresh this page.</li>
-      <li><b>Submit this link.</b> Go to
-        <a href="https://www.calpolyvibecoding.com/">calpolyvibecoding.com</a>,
-        make an account, and paste this URL in. That is how you get counted,
-        and how Claude seats get assigned.</li>
-      <li><b>Then build.</b> Open Gemini, get a page, and replace this entire
-        file with it.</li>
-    </ol>
+      <!-- Quick Add Ideas -->
+      <div class="quick-add">
+        <span class="quick-add-title">Quick Add:</span>
+        <button class="chip-btn" onclick="addQuickIngredient('Eggs')">+ Eggs</button>
+        <button class="chip-btn" onclick="addQuickIngredient('Rice')">+ Rice</button>
+        <button class="chip-btn" onclick="addQuickIngredient('Garlic')">+ Garlic</button>
+        <button class="chip-btn" onclick="addQuickIngredient('Chicken')">+ Chicken</button>
+        <button class="chip-btn" onclick="addQuickIngredient('Pasta')">+ Pasta</button>
+        <button class="chip-btn" onclick="addQuickIngredient('Cheese')">+ Cheese</button>
+        <button class="chip-btn" onclick="addQuickIngredient('Onion')">+ Onion</button>
+      </div>
+
+      <!-- Active Ingredients Container -->
+      <div class="pantry-tags" id="pantry-tags">
+        <span class="empty-pantry-msg">Your pantry is empty. Add ingredients above or tap quick-add tags!</span>
+      </div>
+    </section>
+
+    <!-- Step 2: Available Recipes -->
+    <section class="section-card" style="border: none; padding: 0; background: transparent; box-shadow: none;">
+      <div class="section-header" style="margin-bottom: 1.5rem;">
+        <div class="step-number">2</div>
+        <h2 class="section-title">Recipes You Can Make</h2>
+      </div>
+
+      <div class="recipe-grid" id="recipe-grid">
+        <!-- JS populates recipes here -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Recipe Details Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content" id="modal-content">
+      <button class="close-modal" onclick="closeModal()">&times;</button>
+      <div id="modal-body">
+        <!-- JS populates modal content -->
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>How to replace this page</h2>
-    <ol>
-      <li>Copy what Gemini gives you with the <b>copy button</b> on the code
-        block. Do not click and drag.</li>
-      <li>Open <code>index.html</code> here and click the pencil icon.</li>
-      <li><b>Ctrl+A</b> (<b>Cmd+A</b> on Mac), then <b>Delete</b>. All of it.
-        Yes, really.</li>
-      <li>Paste, commit, refresh.</li>
-    </ol>
-  </div>
-
+  <!-- Footer -->
   <footer>
-    Nothing on this page is precious. It exists so the link has something to
-    show before you have something of your own.
+    <p>© Pantry Cook — Designed for beginner cooks to eliminate food waste and master macros.</p>
   </footer>
 
-</main>
+  <script>
+    // Global State
+    let pantry = ['Eggs', 'Rice']; // Default initial ingredients for quick start
+
+    // Simple Recipe Database with Beginner Tips and Full Macros
+    const recipes = [
+      {
+        id: 'egg-fried-rice',
+        title: 'Simple Egg Fried Rice',
+        level: 'Easy • 15 Mins',
+        desc: 'A classic beginner-friendly dish that turns leftover cooked rice and eggs into a comforting, savory meal.',
+        ingredients: ['Eggs', 'Rice', 'Garlic', 'Soy Sauce', 'Oil', 'Onion'],
+        macros: {
+          calories: '420 kcal',
+          protein: '14g',
+          carbs: '58g',
+          fats: '15g'
+        },
+        tip: 'Best practice: Use day-old, chilled rice! Freshly cooked hot rice gets mushy when fried.',
+        steps: [
+          'Beat 2 eggs in a small bowl with a pinch of salt.',
+          'Heat 1 tbsp of oil in a skillet over medium-high heat. Add chopped garlic and onion, sautéing for 1 minute.',
+          'Push vegetables to the side, pour in the beaten eggs, and scramble quickly.',
+          'Add cold cooked rice into the pan, breaking up any clumps with your spatula.',
+          'Drizzle 1-2 tbsp of soy sauce over everything and stir-fry continuously for 3-4 minutes until piping hot.'
+        ]
+      },
+      {
+        id: 'garlic-butter-pasta',
+        title: 'Garlic Butter & Cheese Pasta',
+        level: 'Super Easy • 12 Mins',
+        desc: 'Rich, comforting, and virtually foolproof. A quick classic requiring minimal ingredients and basic boiling technique.',
+        ingredients: ['Pasta', 'Garlic', 'Butter', 'Cheese', 'Salt'],
+        macros: {
+          calories: '510 kcal',
+          protein: '16g',
+          carbs: '65g',
+          fats: '21g'
+        },
+        tip: 'Save a small cup of salted pasta water before draining! The starch helps melt the cheese into a smooth sauce.',
+        steps: [
+          'Boil pasta in salted water according to package instructions (usually 8-10 mins).',
+          'While pasta cooks, melt 2 tbsp butter in a pan over low heat and sauté minced garlic for 60 seconds (don\'t let it burn!).',
+          'Drain pasta, leaving ~2 tablespoons of cooking water behind.',
+          'Toss pasta into the garlic butter, remove from heat, and stir in grated cheese until creamy.'
+        ]
+      },
+      {
+        id: 'cheesy-scrambled-eggs',
+        title: 'Fluffy Cheesy Omelet / Scramble',
+        level: 'Easy • 8 Mins',
+        desc: 'Learn proper heat control to get soft, creamy scrambled eggs or a soft folded omelet every single time.',
+        ingredients: ['Eggs', 'Cheese', 'Butter', 'Salt'],
+        macros: {
+          calories: '310 kcal',
+          protein: '19g',
+          carbs: '2g',
+          fats: '25g'
+        },
+        tip: 'Cook on low heat! High heat makes eggs rubbery and dry.',
+        steps: [
+          'Whisk 3 eggs thoroughly with salt and a splash of water or milk until completely uniform.',
+          'Melt butter in a non-stick pan over LOW heat.',
+          'Pour in eggs. Let them sit for 10 seconds, then gently push them around with a silicone spatula.',
+          'When eggs are almost set but still glossy, sprinkle cheese on top and fold over. Turn off heat immediately.'
+        ]
+      },
+      {
+        id: 'pan-seared-chicken',
+        title: 'Seared Chicken & Rice Bowl',
+        level: 'Intermediate • 20 Mins',
+        desc: 'A staple high-protein meal. Teaches you how to season and properly sear chicken breasts without drying them out.',
+        ingredients: ['Chicken', 'Rice', 'Garlic', 'Oil', 'Salt', 'Pepper'],
+        macros: {
+          calories: '530 kcal',
+          protein: '45g',
+          carbs: '50g',
+          fats: '14g'
+        },
+        tip: 'Let your chicken rest for 5 minutes after cooking so the juices stay inside the meat instead of running out.',
+        steps: [
+          'Pat chicken breast dry with a paper towel and season liberally with salt, pepper, and garlic powder.',
+          'Heat 1 tbsp oil in a skillet over medium-high heat until hot.',
+          'Place chicken in the pan and cook without moving for 5-6 minutes until golden brown.',
+          'Flip and cook another 5-6 minutes until internal temp reaches 165°F (74°C).',
+          'Slice chicken and serve over warm cooked rice.'
+        ]
+      },
+      {
+        id: 'quick-tomato-pasta',
+        title: 'Rustic Garlic Tomato Pasta',
+        level: 'Easy • 15 Mins',
+        desc: 'A simple plant-forward pasta dish utilizing basic pantry aromatics and fresh or canned tomatoes.',
+        ingredients: ['Pasta', 'Tomato', 'Garlic', 'Onion', 'Oil'],
+        macros: {
+          calories: '390 kcal',
+          protein: '11g',
+          carbs: '70g',
+          fats: '9g'
+        },
+        tip: 'Adding a tiny pinch of sugar balances out the natural acidity of fresh tomatoes.',
+        steps: [
+          'Cook pasta in boiling salted water.',
+          'In a skillet, heat oil over medium heat. Sauté diced onions and garlic until soft and fragrant (3 mins).',
+          'Add diced tomatoes and cook down for 7-10 minutes until they break down into a rustic sauce.',
+          'Season with salt and pepper to taste.',
+          'Combine drained pasta directly with the sauce and toss well.'
+        ]
+      }
+    ];
+
+    // Functions
+    function renderPantry() {
+      const tagsContainer = document.getElementById('pantry-tags');
+      tagsContainer.innerHTML = '';
+
+      if (pantry.length === 0) {
+        tagsContainer.innerHTML = '<span class="empty-pantry-msg">Your pantry is empty. Add ingredients above or tap quick-add tags!</span>';
+      } else {
+        pantry.forEach(item => {
+          const tag = document.createElement('div');
+          tag.className = 'tag';
+          tag.innerHTML = `
+            ${item}
+            <button onclick="removeIngredient('${item}')" title="Remove">&times;</button>
+          `;
+          tagsContainer.appendChild(tag);
+        });
+      }
+
+      renderRecipes();
+    }
+
+    function handleAddIngredient(e) {
+      e.preventDefault();
+      const input = document.getElementById('ingredient-input');
+      const val = input.value.trim();
+
+      if (val) {
+        const formatted = val.charAt(0).toUpperCase() + val.slice(1).toLowerCase();
+        if (!pantry.includes(formatted)) {
+          pantry.push(formatted);
+          renderPantry();
+        }
+        input.value = '';
+      }
+    }
+
+    function addQuickIngredient(name) {
+      if (!pantry.includes(name)) {
+        pantry.push(name);
+        renderPantry();
+      }
+    }
+
+    function removeIngredient(name) {
+      pantry = pantry.filter(item => item !== name);
+      renderPantry();
+    }
+
+    function renderRecipes() {
+      const grid = document.getElementById('recipe-grid');
+      grid.innerHTML = '';
+
+      // Score recipes based on matching ingredients in pantry
+      const scoredRecipes = recipes.map(recipe => {
+        const matches = recipe.ingredients.filter(ing => 
+          pantry.some(p => p.toLowerCase() === ing.toLowerCase())
+        );
+        return {
+          ...recipe,
+          matchCount: matches.length,
+          matches
+        };
+      });
+
+      // Sort by highest matches first
+      scoredRecipes.sort((a, b) => b.matchCount - a.matchCount);
+
+      scoredRecipes.forEach(recipe => {
+        const card = document.createElement('div');
+        card.className = 'recipe-card';
+        
+        const hasMatches = recipe.matchCount > 0;
+        const matchText = hasMatches 
+          ? `<span class="match-high">${recipe.matchCount} ingredient(s) matched</span> from your pantry`
+          : `Add ingredients like ${recipe.ingredients.slice(0, 2).join(', ')} to match`;
+
+        card.innerHTML = `
+          <div class="card-body">
+            <span class="card-badge">${recipe.level}</span>
+            <h3 class="recipe-title">${recipe.title}</h3>
+            <p class="recipe-desc">${recipe.desc}</p>
+            
+            <!-- Macros Section -->
+            <div class="macros-grid">
+              <div class="macro-item">
+                <span class="macro-value">${recipe.macros.calories}</span>
+                <span class="macro-label">Calories</span>
+              </div>
+              <div class="macro-item">
+                <span class="macro-value">${recipe.macros.protein}</span>
+                <span class="macro-label">Protein</span>
+              </div>
+              <div class="macro-item">
+                <span class="macro-value">${recipe.macros.carbs}</span>
+                <span class="macro-label">Carbs</span>
+              </div>
+              <div class="macro-item">
+                <span class="macro-value">${recipe.macros.fats}</span>
+                <span class="macro-label">Fats</span>
+              </div>
+            </div>
+
+            <div class="match-info">${matchText}</div>
+            
+            <button class="btn btn-secondary" onclick="openRecipeModal('${recipe.id}')" style="width: 100%;">
+              View Step-by-Step Guide
+            </button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    function openRecipeModal(id) {
+      const recipe = recipes.find(r => r.id === id);
+      if (!recipe) return;
+
+      const modalBody = document.getElementById('modal-body');
+      
+      const ingredientsMarkup = recipe.ingredients.map(ing => {
+        const inPantry = pantry.some(p => p.toLowerCase() === ing.toLowerCase());
+        const style = inPantry ? 'style="font-weight: 700; color: var(--primary);"' : '';
+        const badge = inPantry ? ' (In Pantry)' : '';
+        return `<li ${style}>${ing}${badge}</li>`;
+      }).join('');
+
+      const stepsMarkup = recipe.steps.map(step => `<li>${step}</li>`).join('');
+
+      modalBody.innerHTML = `
+        <span class="card-badge">${recipe.level}</span>
+        <h2 class="modal-title">${recipe.title}</h2>
+        
+        <!-- Macros Bar -->
+        <div class="macros-grid" style="margin-top: 1rem; margin-bottom: 1rem;">
+          <div class="macro-item">
+            <span class="macro-value">${recipe.macros.calories}</span>
+            <span class="macro-label">Calories</span>
+          </div>
+          <div class="macro-item">
+            <span class="macro-value">${recipe.macros.protein}</span>
+            <span class="macro-label">Protein</span>
+          </div>
+          <div class="macro-item">
+            <span class="macro-value">${recipe.macros.carbs}</span>
+            <span class="macro-label">Carbs</span>
+          </div>
+          <div class="macro-item">
+            <span class="macro-value">${recipe.macros.fats}</span>
+            <span class="macro-label">Fats</span>
+          </div>
+        </div>
+
+        <div class="beginner-tip">
+          <div class="beginner-tip-title">💡 Beginner Cooking Tip</div>
+          <div>${recipe.tip}</div>
+        </div>
+
+        <div class="ingredients-list">
+          <h4>Ingredients Needed</h4>
+          <ul>${ingredientsMarkup}</ul>
+        </div>
+
+        <div class="steps-list">
+          <h4>Instructions</h4>
+          <ol>${stepsMarkup}</ol>
+        </div>
+      `;
+
+      document.getElementById('modal-overlay').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('active');
+    }
+
+    // Close modal on clicking backdrop
+    document.getElementById('modal-overlay').addEventListener('click', (e) => {
+      if (e.target.id === 'modal-overlay') {
+        closeModal();
+      }
+    });
+
+    // Initialize Page
+    renderPantry();
+  </script>
 </body>
 </html>
